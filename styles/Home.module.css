@@ -1,7 +1,19 @@
+
+.triangle {
+  background-image: -webkit-linear-gradient(-70deg, #F06292 50%, #E55C8A 50%);
+  height: 100vh;
+}
 .container {
-  padding: 0 2rem;
+
+  margin-top: 2rem;
+  border-radius: 1rem;
+  padding:  2rem 2rem 15rem 2rem;
+  background-color: #3C424A;
 }
 
+.list-container {
+  border: 3px solid black; 
+}
 .main {
   min-height: 100vh;
   padding: 4rem 0;
