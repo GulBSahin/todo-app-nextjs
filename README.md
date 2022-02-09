@@ -1,3 +1,6 @@
+![todo-nextjs](https://user-images.githubusercontent.com/70208660/153255276-85a11b6c-2a36-481d-886c-4f8426f6e161.gif)
+
+
 # Simple ToDo App
 
 This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
