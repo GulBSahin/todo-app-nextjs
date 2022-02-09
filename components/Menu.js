@@ -5,12 +5,9 @@ import MenuItem from '@mui/material/MenuItem';
 import {Delete,PushPin,StickyNote2} from '@mui/icons-material';
 
 export default function MenuList({task, anchorEl,  handleClose}) {
-    const {setTask,tasks,setTasks,fetchTasks,toggleMemo}=useContext(TodoContext);
+    const {fetchTasks,toggleMemo,showMemo}=useContext(TodoContext);
     
-
-    
-    
-        //delete tasks with DELETE Method
+//delete tasks with DELETE Method
 const deleteComment = async (taskId) => { // delete task from the api
         const response = await fetch(`/api/tasks/${taskId}`, {
             method: 'DELETE'
@@ -22,23 +19,17 @@ const deleteComment = async (taskId) => { // delete task from the api
     
     const open = Boolean(anchorEl);
    
-    
-    
     const handlePin= async (task) => {
-        console.log(task)
             const response = await fetch(`/api/tasks/${task.id}`, {
                 method: 'PATCH',
-                body: JSON.stringify({title:task.title,memo:task.memo,checked:task.checked,pinned:!task.pinned }),
+                body: JSON.stringify({pinned:!task.pinned}),
                 headers: {
                     'Content-Type': 'application/json'   
                 }
             })
             const data = await response.json()
-            console.log(data)
-     
             fetchTasks()
         }
-    
     
     return (
         <div>
@@ -54,7 +45,9 @@ const deleteComment = async (taskId) => { // delete task from the api
             </MenuItem>
             <MenuItem onClick={()=>toggleMemo(task)} disableRipple>
             <StickyNote2  />
-            Add a memo
+            {showMemo ? 
+            (<p onClick={()=>toggleMemo(task)}> Close Memo </p> )
+            : (<p>Add a memo </p> )}
             </MenuItem>
             <MenuItem onClick={()=>deleteComment(task.id)} disableRipple>
             <Delete />

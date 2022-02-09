@@ -3,7 +3,7 @@
         {
             "id": 1644386604146,
             "title": "task 1",
-            "memo": "memo 1",
+            "memo": "nemo",
             "checked": true,
             "pinned": true
         },
@@ -18,6 +18,13 @@
             "id": 1644389500340,
             "title": "task 2",
             "memo": "memo 2",
+            "checked": true,
+            "pinned": true
+        },
+        {
+            "id": 1644419906619,
+            "title": "added  coolest task ",
+            "memo": "this is memo of todo list ",
             "checked": false,
             "pinned": true
         }

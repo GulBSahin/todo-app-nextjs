@@ -9,10 +9,7 @@ import MenuList from "./Menu";
 
 export default function Todo({task}) {
 
-    const {tasks,setTasks,fetchTasks,setShowMemo, showMemo}=useContext(TodoContext);
-    const {id,title,memo,checked,pinned}=task
-    
-  
+    const {fetchTasks}=useContext(TodoContext);
     const [anchorEl, setAnchorEl] = useState(null);
     const open = Boolean(anchorEl);
     
@@ -23,28 +20,18 @@ export default function Todo({task}) {
     setAnchorEl(null);    
      };
    
-    const [checkState, setCheckState] = useState(true)
-    const toggleTask=(toggleDoneId) => {
-        setTasks(            
-            tasks.map((task)=> task.id === toggleDoneId ? {...task, checked: !task.checked} : task))
-        checkHandler(toggleDoneId),
-        setCheckState(!checkState),
-        console.log(task.checked , checkState)    
-        }
-
-    
     const checkHandler = async (taskId) => {
-    
         const response = await fetch(`/api/tasks/${taskId}`, {
             method: 'PATCH',
-            body: JSON.stringify({title: title, memo: memo, checked: checkState, pinned: pinned}),
+            body: JSON.stringify({checked: !task.checked}),
             headers: {
                 'Content-Type': 'application/json'   
             }
         })
         const data = await response.json()
         console.log(data)
-        }
+        fetchTasks()    
+    }
     
     return (
         <div >   
@@ -58,22 +45,22 @@ export default function Todo({task}) {
              </IconButton>
             }
             >
-            {/* //checkbox and sen checked value to api/tasks */}
             <ListItemIcon> 
                 {task.pinned? ( <PushPin fontSize="large"style={{color:"#EC6190"}} />) : ( <StickyNote2 fontSize="large"style={{color:"#3C424A"}} />) }  
               
                 <Checkbox 
                     style={{color:'#939AA3'}}
                     size='large'
-                    // checked={checkState}
+                    checked={task.checked}
                     inputProps={{ 'aria-label': 'controlled' }} 
-                    // onChange={()=>toggleTask(task.id)}
+                    onChange={()=>checkHandler(task.id)}
                 />  
             </ListItemIcon>
-            {/* //----------------------------------------------------------------------         */}
+ 
             <ListItemText 
             primaryTypographyProps={{ sx: { color:"white",fontSize: "25px", mt:"3px"}}}
-            secondaryTypographyProps={{ sx: { color:"#939AA3",fontSize: "20px" }}} primary={task.title} secondary={task.memo} />      
+            secondaryTypographyProps={{ sx: { color:"#939AA3",fontSize: "20px" }}} primary={task.title} secondary={task.memo} />   
+
         </ListItem>
         
         <MenuList key={task.id} task={task} anchorEl={anchorEl} setAnchorEl={setAnchorEl} handleClose={handleClose}/>

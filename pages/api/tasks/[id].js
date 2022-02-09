@@ -22,9 +22,11 @@ export default function handler(req, res) {
 				if (index > -1) {
 					if (req.body.title) data[index].title = req.body.title
 					if (req.body.memo) data[index].memo = req.body.memo
-					if (req.body.checked) data[index].checked = req.body.checked
-					if (req.body.pinned) data[index].pinned = req.body.pinned
-
+					// if (req.body.checked) data[index].checked = req.body.checked
+					// if (req.body.pinned) data[index].pinned = req.body.pinned
+					if ('checked' in req.body) data[index].checked = req.body.checked
+					if ('pinned' in req.body) data[index].pinned = req.body.pinned
+					
 					db.set('tasks', data)
 					res.status(200).json(data[index])
 				} else {
