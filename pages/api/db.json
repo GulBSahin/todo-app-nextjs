@@ -1,32 +1,39 @@
 {
     "tasks": [
         {
-            "id": 1644386604146,
-            "title": "task 1",
-            "memo": "nemo",
+            "id": 1644424790955,
+            "title": "finish the task of CBN labs on time",
+            "memo": "Feb 9th, 2022 wednesday",
             "checked": true,
             "pinned": true
         },
         {
-            "id": 1644386620406,
-            "title": "task 3",
-            "memo": "memo 3",
-            "checked": false,
-            "pinned": true
-        },
-        {
-            "id": 1644389500340,
-            "title": "task 2",
-            "memo": "memo 2",
+            "id": 1644425073665,
+            "title": "finish the fullstack django project",
+            "memo": "deadline : Feb 13th, 2022 sunday ",
             "checked": true,
+            "pinned": false
+        },
+        {
+            "id": 1644425365171,
+            "title": "research about your backend project",
+            "memo": "deadline : Feb 13th, 2022 sunday ",
+            "checked": false,
+            "pinned": false
+        },
+        {
+            "id": 1644425539601,
+            "title": "do plates every morning!",
+            "memo": "drink more water",
+            "checked": false,
             "pinned": true
         },
         {
-            "id": 1644419906619,
-            "title": "added  coolest task ",
-            "memo": "this is memo of todo list ",
+            "id": 1644426485401,
+            "title": "11 am meeting",
+            "memo": "google meeting",
             "checked": false,
-            "pinned": true
+            "pinned": false
         }
     ]
 }

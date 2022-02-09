@@ -3,7 +3,7 @@ import { useContext } from "react";
 import { TodoContext } from "../contexts/TodoContext";
 
 export default function TodoForm() {
-    const {task,setTask,fetchTasks,showMemo}=useContext(TodoContext);
+    const {task,setTask,fetchTasks,showMemo,setShowMemo}=useContext(TodoContext);
     const {title,memo}=task
 
 
@@ -32,6 +32,8 @@ export default function TodoForm() {
         const data = await response.json()
         console.log(data)
        fetchTasks()    
+       setShowMemo(false)
+       setTask({...task,title:"",memo:""}) 
     }
 
     return (

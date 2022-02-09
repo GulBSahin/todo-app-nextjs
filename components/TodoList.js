@@ -4,7 +4,7 @@ import { TodoContext } from "../contexts/TodoContext";
 
 
 export default function TodoList() {
-    const {tasks}=useContext(TodoContext);
+    const {tasks, setShowMemo}=useContext(TodoContext);
     
     // const pinnedTasks = tasks.filter((task) => task.pinned==true);
     // const unpinnedTasks = tasks.filter((task) => task.pinned==false);
@@ -17,8 +17,11 @@ export default function TodoList() {
     }, [tasks]) 
     return (
         <div>
+            {/* if there is no task, show memo */}
+            {tasks.length==0 ? (setShowMemo(false)) : null }   
             { 
-            tasks.length>0 ? (
+            //  organise tasks into pinned and unpinned
+            tasks.length>0 ? (   
                 <>
             {pinnedTasks?.map(task => 
              <Todo key={task.id} task={task}/>                    
@@ -28,9 +31,10 @@ export default function TodoList() {
              <Todo key={task.id} task={task}/>                    
             )} 
              </>
-            ):(
-                 <h1 style={{color:"darkgray" , textAlign:"center"}}> No tasks to display  </h1> 
-            )}          
+            ): 
+            (  <h1 style={{color:"darkgray" , textAlign:"center"}}> No tasks to display  </h1> 
+            )}     
+              {/* {tasks.length=0 ? (setShowMemo(false)) : null }    */}
         </div>
     )
 }

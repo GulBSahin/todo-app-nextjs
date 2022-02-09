@@ -39,7 +39,7 @@ export default function Home() {
         <meta name="description" content="todo app with next.js" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <TodoContext.Provider value={{task,setTask,tasks, setTasks,fetchTasks,showMemo, toggleMemo}} >
+      <TodoContext.Provider value={{task,setTask,tasks, setTasks,fetchTasks,showMemo, setShowMemo,toggleMemo}} >
         <Container maxWidth="md" className={styles.container}>
             <TodoForm />
             <TodoList /> 
